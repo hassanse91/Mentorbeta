@@ -1,0 +1,91 @@
+
+<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="thumbnail">
+	<div class="container-fluid">
+		<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/nntGTK2Fhb0"> </iframe>
+	</div>
+	</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<p>
+		<%= image_tag @mentor.image.url(:medium) %>
+	</p>
+
+</div>
+<div class="col-md-4">
+
+	<p>
+	 <h1><%= @mentor.FirstName.capitalize %> <%= @mentor.LastName.capitalize.first(1) %></h1>
+	 <em> <%= time_ago_in_words(@mentor.created_at)%></em>
+	</p>
+	<p>
+		pas d'avis encore 	
+	</p>
+	
+	<p>
+	<span class="glyphicon glyphicon-time" aria-hidden="true">  </span> 5 heures de cours </p>
+	<p> <span class="glyphicon glyphicon-gift" aria-hidden="true">   </span>    premier cours gratuit </p>
+ 	<p> <span class="glyphicon glyphicon-eye-open" aria-hidden="true">  </span> profils verifier </p>
+	
+</div>
+<div class="col-md-4">
+<% if @mentor.user == current_user %>
+	<%= render 'onoffswitch' %>
+	<% end %>
+</div>
+</div>
+<div class="row">
+<div class="col-md-8">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			 <strong>Presentation</strong>
+		</div>
+		<div class="panel-body">
+		<% if (@mentor.presentation).scan(/\w+/).size < 30 && @mentor.user == current_user %>
+	        <%= (@mentor.presentation).scan(/\w+/).size  %> Words for a presentation !? not enough, max 30 words, to change it click
+	        <%= link_to "here", edit_mentor_path(@mentor) %>
+		<% else %>
+			 <%= @mentor.presentation %>
+		<% end %>
+		</div>
+	</div>
+	<% if @matieres.blank? && ( @mentor.user == current_user ) %>
+	<%= link_to 'Ajouter Matiere', new_mentor_matiere_path(@mentor), class: "btn btn-default"%>
+	<% else %>
+	<h1>Matiere Enseignées :</h1>
+		<% @matieres.each do |matiere| %>
+			<div class="thumbnail">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<strong> <%= matiere.name  %></strong>
+				</div>
+				<div class="panel-body">
+					<%= matiere.presentation %>
+				</div>
+			</div>
+				<% if @mentor.user == current_user %>
+						<%= link_to "edit matiere", edit_mentor_matiere_path(@mentor, matiere), class: "btn btn-primary" %>
+				<%= link_to "Delete matiere", [matiere.mentor, matiere], method: :delete, data: { confirm: 'Are you sure ?' }, class: "btn btn-primary" %>
+				<% end %>
+			</div>	
+		<% end %>
+	<% end %>
+
+</div>
+<div class="col-md-4">
+	<% if @mentor.user == current_user %>
+		<%= link_to 'Edit Mentor', edit_mentor_path(@mentor), class: "btn btn-primary" %> 
+		<%= link_to 'Ajouter Matiere', new_mentor_matiere_path(@mentor), class: "btn btn-default"%>
+	 <% else %>
+		<%= render 'seance' %>
+	<% end %>
+	<%= link_to 'Back', root_path, class: "btn btn-default" %>
+	
+</div>
+</div>
+
+</div>
+</div>

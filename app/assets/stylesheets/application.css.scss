@@ -1,0 +1,98 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree
+ *= require devise_bootstrap_views
+ *= require bootstrap-datepicker
+ *= require_self
+ 
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "normalize";
+body {
+    padding-top: 40px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 18px;
+    padding-bottom: 19px;
+    margin-top: 12px;
+}
+
+.image {
+	height: 187px;
+	width: 135px;
+	position: relative;
+}
+
+.home-mentor-items {
+    width: 100%;
+    overflow-x: auto;
+}
+.home-profil-inline-items {
+	text-align: left;
+    width: 1440px;
+}
+
+.profil-item-added {
+	margin-left: 10px;
+	position: relative;
+    display: inline-block;
+    border-radius: 4px;
+    overflow: hidden;
+    list-style: none;
+}
+.item-descrition {
+	font-family: OpenSans, sans-serif;
+	padding: 14px;
+    font-size: 11px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: left;
+    z-index: 3;
+    color: #fff;
+}
+.item-name {
+	    font-weight: 600;
+	    font-size: 11px;
+	    color: #fff;
+	    text-align: left;
+	    box-sizing: border-box;
+    	-webkit-tap-highlight-color: transparent;
+}
+
+.photo-gradient {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-image: url("//cdn.superprof.com/style/images/backgrounds/profs-gradient.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+.subject {
+	    font-size: 11px;
+}
+.catefory-marker {
+	color: #ff328e;
+	display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid;
+    border-radius: 50%;
+    background-color: currentColor;
+}

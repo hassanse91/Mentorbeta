@@ -1,0 +1,31 @@
+<div class="container-reservation"> 
+	<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="thumbnail">
+				<p>Votre Mentor est : <%= link_to @mentor_name, mentor_path(@mentor.id) %></p>
+		<p>La date de la seance est: <%= @reservation.date.to_s(:short) %></p>
+				<% if Time.now < @reservation.date %>
+					<p>	Temps Restant est <%= distance_of_time_in_words( Time.now , @reservation.date ) %> </p>
+
+				<% else %>
+				<p>La seance est depasser </p>
+				<% end %>
+				<p> la matier de la seance est: <%= @matiere_name %> </p>
+				<%= link_to "annuler la seance", mentor_reservation_path(@reservation.mentor_id, @reservation), method: :delete,  data: { confirm: 'Are you sure?' }, class: "btn btn-default"  %>
+				<%= link_to "Remporter la seance", '#', class: "btn btn-default" %>
+
+			</div>
+		</div>
+		<div class="col-md-3 col-md-offset-3">
+	
+			 <%= link_to "Link 1", root_path, class: "btn btn" %>
+			 <%= link_to "Link 1", root_path, class: "btn btn" %>
+			 <%= link_to "Link 1", root_path, class: "btn btn" %>
+			
+
+		
+		</div>
+		</div>
+	</div>
+</div>

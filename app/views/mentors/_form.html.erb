@@ -1,0 +1,42 @@
+<div class="col-md-6 col-md-offset-3">
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4>Mentor</h4>
+  </div>
+  <div class="panel-body">
+<%= simple_form_for(@mentor) do |f| %>
+  <% if @mentor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mentor.errors.count, "error") %> prohibited this mentor from being saved:</h2>
+      <ul>
+      <% @mentor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+    <%= f.input :FirstName, class: "form-control" %>
+  </div>
+  <div class="field" >
+  
+    <%= f.input :LastName, class: "form-control"%>
+  </div>
+  <div class="field">
+    <%= f.input :presentation, class: "form-control" %>
+  </div>
+  <div class="field">
+  
+    <%= f.input :BirthDay, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.input :image, class: "btn btn-default" %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+</div>

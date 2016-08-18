@@ -1,0 +1,31 @@
+<div class="home-mentor-items">	
+<ul class="home-profil-inline-items">	
+<% @mentors.each do |mentor| %>
+
+<li class="profil-item-added">	
+<div class="box-image">
+ <%= link_to  mentor  do %> 
+ <%= image_tag mentor.image.url(), class: "image" %>
+		 <span class="photo-gradient"></span>
+ <% end %>
+
+ </div>
+
+ <div class="item-descrition">
+	<div class="item-name">
+	<%= mentor.FirstName %>
+	</div>
+	<div class="subject">
+		<span class="catefory-marker">
+			
+		</span>
+		Matiere : Maths
+	</div>
+</div>
+</li>
+
+ 	<% end %>
+</ul>
+
+</div>
+</div>

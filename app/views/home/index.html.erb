@@ -1,0 +1,10 @@
+
+<% if !user_signed_in? %>
+	<%= render 'header' %>
+<% end %>
+
+	<% if @mentor.blank? %>
+         <% link_to "New Mentor", new_mentor_path, class: "navbar-brand" %>
+      <% end %>
+<%= render 'container_section' %>
+<%= render 'banner' %>

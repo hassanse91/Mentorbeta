@@ -1,0 +1,45 @@
+<div class="container-reservation">
+<div class="container">
+<div class="col-md-6 col-md-offset-3">
+<h1>Vous avez <%= pluralize(@reservations.count, 'reservation' )%> </h1>
+<% @reservations.each do |reservation| %>
+
+	<% if reservation.mentor == current_user.mentor %>
+			<div class="thumbnail">
+				<div class="form-group">			
+					<p> Eleve : <%= reservation.user.mentor.FirstName %> </p>
+					<p> Matiere: <%= reservation.matiere.name %></p>
+
+					<p>Time:  <%= reservation.date %></p>
+						<%= link_to "Acceder a la seance", mentor_reservation_path(reservation.mentor_id, reservation), class: "btn btn-primary"  %>	
+					
+				</div>
+			</div>
+			
+
+	<% else %>
+	
+		<div class="thumbnail">
+				<div class="form-group">	
+					<p>Mentor : <%= reservation.mentor.FirstName %> </p>
+					<p> Eleve : <%= reservation.user.mentor.FirstName %> </p>
+					<p> Matiere: <%= reservation.matiere.name %></p>
+
+					<p>Time:  <%= reservation.date %></p>
+						<%= link_to "Acceder a la seance", mentor_reservation_path(reservation.mentor_id, reservation), class: "btn btn-primary"  %>
+					<%= link_to "annuler la seance", mentor_reservation_path(reservation.mentor_id, reservation), method: :delete,  data: { confirm: 'Are you sure?' }, class: "btn btn-default"  %>	
+					
+					
+						<%= image_tag  reservation.mentor.image.url(:thumb) %>
+					</div>
+
+			</div>
+	
+	
+	<% end %>
+
+<% end %>
+
+</div>
+</div>
+</div>

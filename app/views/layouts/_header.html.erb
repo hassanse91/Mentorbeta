@@ -1,0 +1,35 @@
+<div class="navbar navbar-inverse">
+	<div class="container-fluide">
+  
+		<div class="navbar-header">
+     
+      <%= link_to "AppMentor", root_path, class: "navbar-brand" %>
+      
+      
+
+<% if user_signed_in? %>
+
+<%= link_to "Deconnexion", destroy_user_session_path, :method => :delete, class: "navbar-brand" %>
+  <div class="navbar-text navbar-right"> 
+  <span class="glyphicon glyphicon-user" aria-hidden="true"> <%= current_user.mentor.FirstName %> (<%= current_user.email %>) </span></div>
+  
+
+    <% if current_user.mentor.blank?  %>
+  <%= link_to "Donner Des Cours", new_mentor_path, class: "navbar-brand" %>
+    <% else %>
+   <%= link_to "Edit Mentor", current_user.mentor,  class: "navbar-brand"  %>
+   <%= link_to "reservation cours", mentor_reservations_path(current_user.mentor.id), class: "navbar-brand" %>
+   
+    <% end %>
+
+       <% else %> 
+
+       <%= link_to "Connection", new_user_session_path, class: "navbar-brand" %>
+       <%= link_to "inscription", new_user_registration_path, class: "navbar-brand" %>
+<% end %>
+    </div>
+
+
+	</div>
+
+</div>

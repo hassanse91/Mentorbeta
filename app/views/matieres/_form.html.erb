@@ -1,0 +1,18 @@
+
+<%= simple_form_for([@mentor, @matiere]) do |f| %>
+<% if @matiere.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@matiere.errors.count, "error") %> prohibited this matiere from being saved:</h2>
+
+      <ul>
+      <% @matiere.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.select :name, ['Mathematique', 'Physique', 'Chimie']%>
+  <%= f.input :presentation%>
+  <%= f.button :submit %>
+<% end %>
+

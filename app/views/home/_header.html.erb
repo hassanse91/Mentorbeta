@@ -1,0 +1,32 @@
+ <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>AppMentor</h1>
+                        <h3>Votre Platforme d'apprentissage en ligne</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+
+                                <%= link_to new_user_registration_path, class: "btn btn-primary btn-lg" do %> 
+                                        <span class="network-name">Commencer</span>
+                                <% end %>
+                              <%= form_tag search_home_index_path, method: :get, class: "navbar-form", role: "search" do %>
+                
+                                    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Ex: Mathématiques" %> <br>
+                                    <%= submit_tag "Chercher", name: nil, class: "btn btn-default" %>
+                            
+                                <% end %>       
+                            
+                        </ul>
+                       
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
